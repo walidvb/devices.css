@@ -36,35 +36,41 @@
 		position: absolute;
 	}
 
+	$width: 200px;
 	&.iphone6{
-		width: 375px;
-		height: 667px;
-		padding: 105px 24px;
+		$owidth: 375;
+		$oheight: 667;
+		$ratio: $owidth / $oheight;
+		
+		$height: $width / $ratio;
+		width: $width;
+		height: $height;
+		padding: (105*$ratio) (24*$ratio);
 		background: #d9dbdc;
-		@include border-radius(56px);
+		@include border-radius(56px*$ratio);
 		-webkit-box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
 		box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
 
 		&:before{
-			width: calc(100% - 12px);
-			height: calc(100% - 12px);
+			width: calc(100% - (#{12px*$ratio}));
+			height: calc(100% - (#{12px*$ratio}));
 			position: absolute;
-			top: 6px;
+			top: 6*$ratio;
 			content: '';
-			left: 6px;
-			@include border-radius(50px);
+			left: 6*$ratio;
+			@include border-radius((50px*$ratio));
 			background: #f8f8f8;
 			z-index: 1;
 		}
 
 		&:after{
-			width: calc(100% - 16px);
-			height: calc(100% - 16px);
+			width: calc(100% - (#{16px*$ratio}));
+			height: calc(100% - (#{16px*$ratio}));
 			position: absolute;
-			top: 8px;
+			top: 8*$ratio;
 			content: '';
-			left: 8px;
-			@include border-radius(48px);
+			left: 8*$ratio;
+			@include border-radius(48px*$ratio);
 			-webkit-box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.1),
 			inset 0 0 6px 3px #FFFFFF;
 			box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.1),
@@ -74,12 +80,12 @@
 
 		.home {
 			@include border-radius(100%);
-			width: 68px;
-			height: 68px;
+			width: 68*$ratio;
+			height: 68*$ratio;
 			position: absolute;
 			left: 50%;
-			margin-left: -34px;
-			bottom: 22px;
+			margin-left: -34*$ratio;
+			bottom: 22*$ratio;
 			z-index: 3;
 			background: rgb(48,50,51);
 			background: -moz-linear-gradient(-45deg, rgba(48,50,51,1) 0%, rgba(181,183,185,1) 50%, rgba(240,242,242,1) 69%, rgba(48,50,51,1) 100%);
@@ -95,55 +101,55 @@
 				position: absolute;
 				content: '';
 				@include border-radius(100%);
-				width: calc(100% - 8px);
-				height: calc(100% - 8px);
-				top: 4px;
-				left: 4px;
+				width: calc(100% - (#{8px*$ratio}));
+				height: calc(100% - (#{8px*$ratio}));
+				top: 4*$ratio;
+				left: 4*$ratio;
 			}
 		}
 
 		.top-bar{
-			height: 14px;
+			height: 14*$ratio;
 			background: #bfbfc0;
 			position: absolute;
-			top: 68px;
+			top: 68*$ratio;
 			left: 0;
 		}
 
 		.bottom-bar{
-			height: 14px;
+			height: 14*$ratio;
 			background: #bfbfc0;
 			position: absolute;
-			bottom: 68px;
+			bottom: 68*$ratio;
 			left: 0;
 		}
 
 		.sleep{
 			position: absolute;
-			top: 190px;
-			right: -4px;
-			width: 4px;
-			height: 66px;
+			top: 190*$ratio;
+			right: -4*$ratio;
+			width: 4*$ratio;
+			height: 66*$ratio;
 			@include border-radius(0px 2px 2px 0px);
 			background: #d9dbdc;
 		}
 
 		.volume{
 			position: absolute;
-			left: -4px;
-			top: 188px;
+			left: -4*$ratio;
+			top: 188*$ratio;
 			z-index: 0;
-			height: 66px;
-			width: 4px;
+			height: 66*$ratio;
+			width: 4*$ratio;
 			@include border-radius(2px 0px 0px 2px);
 			background: #d9dbdc;
 
 			&:before {
 				position: absolute;
-				left: 2px;
-				top: -78px;
-				height: 40px;
-				width: 2px;
+				left: 2*$ratio;
+				top: -78*$ratio;
+				height: 40*$ratio;
+				width: 2*$ratio;
 				@include border-radius(2px 0px 0px 2px);
 				background: inherit;
 				content: '';
@@ -152,10 +158,10 @@
 
 			&:after {
 				position: absolute;
-				left: 0px;
-				top: 82px;
-				height: 66px;
-				width: 4px;
+				left: 0*$ratio;
+				top: 82*$ratio;
+				height: 66*$ratio;
+				width: 4*$ratio;
 				@include border-radius(2px 0px 0px 2px);
 				background: inherit;
 				content: '';
@@ -165,35 +171,35 @@
 
 		.camera {
 			background: #3c3d3d;
-			width: 12px;
-			height: 12px;
+			width: 12*$ratio;
+			height: 12*$ratio;
 			position: absolute;
-			top: 24px;
+			top: 24*$ratio;
 			left: 50%;
-			margin-left: -6px;
+			margin-left: -6*$ratio;
 			@include border-radius(100%);
 			z-index: 3;
 		}
 
 		.sensor {
 			background: #3c3d3d;
-			width: 16px;
-			height: 16px;
+			width: 16*$ratio;
+			height: 16*$ratio;
 			position: absolute;
-			top: 49px;
-			left: 134px;
+			top: 49*$ratio;
+			left: 134*$ratio;
 			z-index: 3;
 			@include border-radius(100%);
 		}
 
 		.speaker {
 			background: #292728;
-			width: 70px;
-			height: 6px;
+			width: 70*$ratio;
+			height: 6*$ratio;
 			position: absolute;
-			top: 54px;
+			top: 54*$ratio;
 			left: 50%;
-			margin-left: -35px;
+			margin-left: -35*$ratio;
 			@include border-radius(6px);
 			z-index: 3;
 		}
@@ -2095,33 +2101,39 @@
 		}
 	}
 
+	$width: 450px;
 	&.ipad{
-		width: 576px;
-		height: 768px;
-		padding: 90px 25px;
+		$owidth: 576;
+		$oheight: 768;
+		$ratio: $owidth / $oheight;
+		
+		$height:$width / $ratio;
+		width: $width;
+		height: $height;
+		padding: 90*$ratio 25*$ratio;
 		background: #242324;
-		@include border-radius(44px);
+		@include border-radius(44px*$ratio);
 
 		&:before{
-			width: calc(100% - 8px);
-			height: calc(100% - 8px);
+			width: calc(100% - (#{8px*$ratio}));
+			height: calc(100% - (#{8px*$ratio}));
 			position: absolute;
 			content: '';
 			display: block;
-			top: 4px;
-			left: 4px;
-			@include border-radius(40px);
+			top: 4*$ratio;
+			left: 4*$ratio;
+			@include border-radius(40px*$ratio);
 			background: #1e1e1e;
 		}
 
 		.camera {
 			background: #3c3d3d;
-			width: 10px;
-			height: 10px;
+			width: 10*$ratio;
+			height: 10*$ratio;
 			position: absolute;
-			top: 44px;
+			top: 44*$ratio;
 			left: 50%;
-			margin-left: -5px;
+			margin-left: -5*$ratio;
 			@include border-radius(100%);
 		}
 
@@ -2132,18 +2144,18 @@
 		.home {
 			background: #242324;
 			@include border-radius(36px);
-			width: 50px;
-			height: 50px;
+			width: 50*$ratio;
+			height: 50*$ratio;
 			position: absolute;
 			left: 50%;
-			margin-left: -25px;
-			bottom: 22px;
+			margin-left: -25*$ratio;
+			bottom: 22*$ratio;
 
 			&:after {
-				width: 15px;
-				height: 15px;
-				margin-top: -8px;
-				margin-left: -8px;
+				width: 15*$ratio;
+				height: 15*$ratio;
+				margin-top: -8*$ratio;
+				margin-left: -8*$ratio;
 				border: 1px solid rgba(255, 255, 255, 0.1);
 				@include border-radius(4px);
 				position: absolute;
@@ -2153,10 +2165,12 @@
 				left: 50%;
 			}
 		}
-
+		
+		$ratio: 768/576;
+		$width: 768px;
 		&.landscape{
-			height: 576px;
-			width: 768px;
+			width: $width;
+			height: $width/$ratio;
 			padding: 25px 90px;
 
 			.camera {
