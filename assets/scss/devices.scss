@@ -1,5 +1,8 @@
 @import 'mixins';
 $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one nexus5 s5 lumia920;
+$devices: iphone6 ipad;
+$width-iphone6: 130px;
+$width-ipad: 320px;
 
 .marvel-device{
 	display: inline-block;
@@ -38,18 +41,20 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 	}
 
 	@if(index($devices, iphone6)){
-		$width: 200px;
+		$width: $width-iphone6;
 		&.iphone6{
 			$owidth: 375;
 			$oheight: 667;
 			$ratio: $owidth / $oheight;
-
 			$height: $width / $ratio;
-			width: $width;
+			$hratio: $width / $owidth;
+			$vratio: $height / $oheight;
+			
 			height: $height;
-			padding: (105px*$ratio) (24px*$ratio);
+			width: $width;
+			padding: (105*$vratio) (24*$hratio);
 			background: #d9dbdc;
-			@include border-radius(56px*$ratio);
+			@include border-radius(56*$vratio);
 			-webkit-box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
 			box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
 
@@ -57,10 +62,10 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 				width: calc(100% - (#{12px*$ratio}));
 				height: calc(100% - (#{12px*$ratio}));
 				position: absolute;
-				top: 6px*$ratio;
+				top: round(6px*$ratio);
 				content: '';
-				left: 6px*$ratio;
-				@include border-radius((50px*$ratio));
+				left: round(6px*$ratio);
+				@include border-radius((50*$vratio));
 				background: #f8f8f8;
 				z-index: 1;
 			}
@@ -69,10 +74,10 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 				width: calc(100% - (#{16px*$ratio}));
 				height: calc(100% - (#{16px*$ratio}));
 				position: absolute;
-				top: 8px*$ratio;
+				top: round(8px*$ratio);
 				content: '';
-				left: 8px*$ratio;
-				@include border-radius(48px*$ratio);
+				left: round(8px*$ratio);
+				@include border-radius(48*$vratio);
 				-webkit-box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.1),
 				inset 0 0 6px 3px #FFFFFF;
 				box-shadow:inset 0 0 3px 0 rgba(0, 0, 0, 0.1),
@@ -82,12 +87,12 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 
 			.home {
 				@include border-radius(100%);
-				width: 68px*$ratio;
-				height: 68px*$ratio;
+				width: round(68*$hratio);
+				height: round(68*$vratio);
 				position: absolute;
 				left: 50%;
-				margin-left: -34px*$ratio;
-				bottom: 22px*$ratio;
+				margin-left: -34*$hratio;
+				bottom: round(22*$vratio);
 				z-index: 3;
 				background: rgb(48,50,51);
 				background: -moz-linear-gradient(-45deg, rgba(48,50,51,1) 0%, rgba(181,183,185,1) 50%, rgba(240,242,242,1) 69%, rgba(48,50,51,1) 100%);
@@ -103,55 +108,55 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 					position: absolute;
 					content: '';
 					@include border-radius(100%);
-					width: calc(100% - (#{8px*$ratio}));
-					height: calc(100% - (#{8px*$ratio}));
-					top: 4px*$ratio;
-					left: 4px*$ratio;
+					width: calc(100% - #{8*$hratio});
+					height: calc(100% - #{8*$vratio});
+					top: round(4*$hratio);
+					left: round(4*$vratio);
 				}
 			}
 
 			.top-bar{
-				height: 14px*$ratio;
+				height: round(14*$vratio);
 				background: #bfbfc0;
 				position: absolute;
-				top: 68px*$ratio;
+				top: round(68*$vratio);
 				left: 0;
 			}
 
 			.bottom-bar{
-				height: 14px*$ratio;
+				height: round(14*$vratio);
 				background: #bfbfc0;
 				position: absolute;
-				bottom: 68px*$ratio;
+				bottom: round(68*$vratio);
 				left: 0;
 			}
 
 			.sleep{
 				position: absolute;
-				top: 190px*$ratio;
-				right: -4px*$ratio;
-				width: 4px*$ratio;
-				height: 66px*$ratio;
+				top: round(190*$vratio);
+				right: round(-4*$hratio);
+				width: round(4*$hratio);
+				height: round(66*$vratio);
 				@include border-radius(0px 2px 2px 0px);
 				background: #d9dbdc;
 			}
 
 			.volume{
 				position: absolute;
-				left: -4px*$ratio;
-				top: 188px*$ratio;
+				left: round(-4*$hratio);
+				top: round(188*$vratio);
 				z-index: 0;
-				height: 66px*$ratio;
-				width: 4px*$ratio;
+				height: round(66*$vratio);
+				width: round(4*$hratio);
 				@include border-radius(2px 0px 0px 2px);
 				background: #d9dbdc;
 
 				&:before {
 					position: absolute;
-					left: 2px*$ratio;
-					top: -78px*$ratio;
-					height: 40px*$ratio;
-					width: 2px*$ratio;
+					left: round(2*$hratio);
+					top: round(-78*$vratio);
+					height: round(40*$vratio);
+					width: round(2*$hratio);
 					@include border-radius(2px 0px 0px 2px);
 					background: inherit;
 					content: '';
@@ -160,10 +165,10 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 
 				&:after {
 					position: absolute;
-					left: 0px*$ratio;
-					top: 82px*$ratio;
-					height: 66px*$ratio;
-					width: 4px*$ratio;
+					left: round(0*$hratio);
+					top: round(82*$vratio);
+					height: round(66*$vratio);
+					width: round(4*$hratio);
 					@include border-radius(2px 0px 0px 2px);
 					background: inherit;
 					content: '';
@@ -173,35 +178,35 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 
 			.camera {
 				background: #3c3d3d;
-				width: 12px*$ratio;
-				height: 12px*$ratio;
+				width: round(12*$hratio);
+				height: round(12*$vratio);
 				position: absolute;
-				top: 24px*$ratio;
+				top: round(24*$vratio);
 				left: 50%;
-				margin-left: -6px*$ratio;
+				margin-left: round(-6*$hratio);
 				@include border-radius(100%);
 				z-index: 3;
 			}
 
 			.sensor {
 				background: #3c3d3d;
-				width: 16px*$ratio;
-				height: 16px*$ratio;
+				width: round(16*$hratio);
+				height: round(16*$vratio);
 				position: absolute;
-				top: 49px*$ratio;
-				left: 134px*$ratio;
+				top: round(49*$vratio);
+				left: round(134*$hratio);
 				z-index: 3;
 				@include border-radius(100%);
 			}
 
 			.speaker {
 				background: #292728;
-				width: 70px*$ratio;
-				height: 6px*$ratio;
+				width: 70*$hratio;
+				height: 6*$vratio;
 				position: absolute;
-				top: 54px*$ratio;
+				top: 54*$vratio;
 				left: 50%;
-				margin-left: -35px*$ratio;
+				margin-left: -35*$hratio;
 				@include border-radius(6px);
 				z-index: 3;
 			}
@@ -2131,18 +2136,20 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 
 	@if(index($devices, ipad))
 	{
-		$width: 450px;
+		$width: $width-ipad;
 		&.ipad{
 			$owidth: 576;
 			$oheight: 768;
 			$ratio: $owidth / $oheight;
-			
-			$height:$width / $ratio;
+			$height: $width / $ratio;
+			$hratio: $width / $owidth;
+			$vratio: $height / $oheight;
+
 			width: $width;
 			height: $height;
-			padding: 90px*$ratio 25px*$ratio;
+			padding: round(90*$vratio) round(25*$hratio);
 			background: #242324;
-			@include border-radius(44px*$ratio);
+			@include border-radius(round(44*$vratio));
 
 			&:before{
 				width: calc(100% - (#{8px*$ratio}));
@@ -2152,18 +2159,18 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 				display: block;
 				top: 4px*$ratio;
 				left: 4px*$ratio;
-				@include border-radius(40px*$ratio);
+				@include border-radius(round(40*$vratio));
 				background: #1e1e1e;
 			}
 
 			.camera {
 				background: #3c3d3d;
-				width: 10px*$ratio;
-				height: 10px*$ratio;
+				width: round(10*$vratio);
+				height: round(10*$vratio);
 				position: absolute;
-				top: 44px*$ratio;
+				top: round(44*$vratio);
 				left: 50%;
-				margin-left: -5px*$ratio;
+				margin-left: round(-5px*$ratio);
 				@include border-radius(100%);
 			}
 
@@ -2174,12 +2181,12 @@ $devices: iphone6 iphone6plus iphone5s iphone5c iphone5s iphone4s ipad htc-one n
 			.home {
 				background: #242324;
 				@include border-radius(36px);
-				width: 50px*$ratio;
-				height: 50px*$ratio;
+				width: round(50*$vratio);
+				height: round(50*$vratio);
 				position: absolute;
 				left: 50%;
-				margin-left: -25px*$ratio;
-				bottom: 22px*$ratio;
+				margin-left: round(-25*$hratio);
+				bottom: round(22*$vratio);
 
 				&:after {
 					width: 15px*$ratio;
